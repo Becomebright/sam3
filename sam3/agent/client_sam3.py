@@ -129,9 +129,9 @@ def call_sam_service(
 
         # 4. Render and save visualizations on the image and save it in the SAM3 output folder
         # print("🔍 Rendering visualizations on the image ...")
-        # viz_image = visualize(serialized_response)
-        # os.makedirs(os.path.dirname(output_image_path), exist_ok=True)
-        # viz_image.save(output_image_path)
+        viz_image = visualize(serialized_response)
+        os.makedirs(os.path.dirname(output_image_path), exist_ok=True)
+        viz_image.save(output_image_path)
         # print("✅ Saved visualization at:", output_image_path)
     except Exception as e:
         print(f"❌ Error calling service: {e}")
