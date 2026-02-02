@@ -63,7 +63,7 @@ def send_generate_request(
                     # Convert image path to base64 format
                     image_path = c["image"]
 
-                    print("image_path", image_path)
+                    # print("image_path", image_path)
                     new_image_path = image_path.replace(
                         "?", "%3F"
                     )  # Escape ? in the path
@@ -106,7 +106,7 @@ def send_generate_request(
     client = OpenAI(api_key=api_key, base_url=server_url)
 
     try:
-        print(f"🔍 Calling model {model}...")
+        # print(f"🔍 Calling model {model}...")
         response = client.chat.completions.create(
             model=model,
             messages=processed_messages,
@@ -186,7 +186,7 @@ def send_direct_request(
                 processed_message["content"] = processed_content
             processed_messages.append(processed_message)
 
-        print("🔍 Running direct inference with vLLM...")
+        # print("🔍 Running direct inference with vLLM...")
 
         # Run inference using vLLM's chat interface
         outputs = llm.chat(

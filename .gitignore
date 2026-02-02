@@ -151,3 +151,6 @@ Thumbs.db
 # BPE vocabulary files
 *.bpe
 *.vocab
+
+checkpoints
+Qwen3-VL-8B-Thinking
