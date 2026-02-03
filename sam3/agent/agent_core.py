@@ -488,7 +488,7 @@ def agent_inference(
             return messages, final_outputs, rendered_final_output
 
         elif tool_call["name"] == "report_no_mask":
-            # print("🔍 Calling report_no_mask tool...")
+            print("🔍 Calling report_no_mask tool...")
             height, width = cv2.imread(img_path).shape[:2]
             final_outputs = {
                 "original_image_path": img_path,
