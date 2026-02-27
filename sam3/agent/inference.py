@@ -30,6 +30,8 @@ def run_single_image_inference(
     # Generate output file names
     image_basename = os.path.splitext(os.path.basename(image_path))[0]
     prompt_for_filename = text_prompt.replace("/", "_").replace(" ", "_")
+    # Truncate prompt to avoid overly long filenames (max 100 chars)
+    prompt_for_filename = prompt_for_filename[:100]
 
     base_filename = f"{image_basename}_{prompt_for_filename}_agent_{llm_name}"
     output_json_path = os.path.join(output_dir, f"{base_filename}_pred.json")
