@@ -2,7 +2,6 @@
 
 # pyre-unsafe
 
-import cv2
 import numpy as np
 import pycocotools.mask as mask_utils
 from PIL import Image
@@ -47,10 +46,8 @@ def visualize(
         ]
         binary_masks = [mask_utils.decode(rle) for rle in rle_masks]
 
-        img_bgr = cv2.imread(img_path)
-        if img_bgr is None:
-            raise FileNotFoundError(f"Could not read image: {img_path}")
-        img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        pil_img = Image.open(img_path)
+        img_rgb = np.array(pil_img.convert("RGB"))
 
         viz = Visualizer(
             img_rgb,
@@ -95,10 +92,8 @@ def visualize(
         rle_i = {"size": (orig_h, orig_w), "counts": input_json["pred_masks"][idx]}
         bin_i = mask_utils.decode(rle_i)
 
-        img_bgr_i = cv2.imread(img_path)
-        if img_bgr_i is None:
-            raise FileNotFoundError(f"Could not read image: {img_path}")
-        img_rgb_i = cv2.cvtColor(img_bgr_i, cv2.COLOR_BGR2RGB)
+        pil_img_i = Image.open(img_path)
+        img_rgb_i = np.array(pil_img_i.convert("RGB"))
 
         viz_i = Visualizer(
             img_rgb_i,
